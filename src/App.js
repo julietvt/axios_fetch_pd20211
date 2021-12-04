@@ -1,7 +1,7 @@
-import UserLoaderCustomHook from './components/UserLoaderCustomHook';
+import UserLoaderWithReducer from './components/UserLoaderWithReducer';
 
 function App() {
-  return <UserLoaderCustomHook />;
+  return <UserLoaderWithReducer />;
 }
 
 export default App;
