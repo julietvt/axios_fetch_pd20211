@@ -1,8 +1,7 @@
-import UserLoaderC from './components/UserLoaderC';
-import UserLoaderH from './components/UserLoaderH';
+import UserLoaderCustomHook from './components/UserLoaderCustomHook';
 
 function App() {
-  return <UserLoaderH />;
+  return <UserLoaderCustomHook />;
 }
 
 export default App;
