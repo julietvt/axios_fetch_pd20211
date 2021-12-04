@@ -1,27 +1,16 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
+import { loadUsers } from '../../api';
 
 const UserLoaderH = (props) => {
     const [users, setUsers] = useState([]);
     const [isFetching, setIsFetching] = useState(false);
     const [isError, setIsError] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
-
-    const load = () => {
-        setIsFetching(true);
-        fetch(`https://randomuser.me/api/?seed=pd2021&results=5&inc=name,email&page=${currentPage}`)
-        .then(response => response.json())
-        .then(data => { 
-            setUsers(data.results);
-            //console.log(data.results);
-            }
-            )
-        .catch(error => {setIsError(true)})
-        .finally(() => {setIsFetching(false)});
-    }
+    const [currentPage, setCurrentPage] = useState(1);    
 
     useEffect( () => {
-        load();
+        setIsFetching(true);
+        loadUsers({page: currentPage}).then(data => setUsers(data.results));
     }, [currentPage]);
 
     const prevPage = () => {
