@@ -1,3 +1,4 @@
+import axios from 'axios';
 import './App.css';
 
 const options = {
@@ -5,6 +6,15 @@ const options = {
   page: 1,
   seed: 'PD2021-1',
 };
+
+function loadUsersAxios({ results, seed, page }) {
+  axios
+    .get(
+      `https://randomuser.me/api/?results=${results}&seed=${seed}&page=${page}`
+    )
+    .then((response) => console.log(response.data.results))
+    .catch((error) => console.log(error));
+}
 
 function loadUsers({ results, seed, page }) {
   fetch(
@@ -16,7 +26,8 @@ function loadUsers({ results, seed, page }) {
 }
 
 function App() {
-  loadUsers(options);
+  //loadUsers(options);
+  loadUsersAxios(options);
   return <p>Load data from randomuser</p>;
 }
 
